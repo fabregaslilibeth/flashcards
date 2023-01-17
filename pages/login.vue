@@ -3,7 +3,7 @@
     <div class="px-12 py-12 my-24">
       <form class="space-y-3">
         <div>
-          <h1 class="font-bold text-lg md:text-xl xl:text-2xl tracking-tight">Register</h1>
+          <h1 class="font-bold text-lg md:text-xl xl:text-2xl tracking-tight">LOGIN</h1>
         </div>
         <div class="space-y-2">
           <label for="email" class="block font-medium tracking-tight">Email</label>
@@ -33,27 +33,35 @@
           >Login</button>
         </div>
       </form>
-    </div> {{  user }}
+    </div> {{ user }} {{ error  }}
   </div>
 </template>
 
 <script setup lang="ts">
-import { login } from "../server/lib/auth";
+import { login } from "../server/lib/auth"
+import { UserInfo } from '@/utils/types/user'
+
+const { user, userStore } = useUser()
+const router = useRouter()
+
 const formState = ref({
-  email: '',
-  password: '',
+  email: 'hey@gmail.com',
+  password: 'heygoogle',
 })
 
-const user = ref({
-  email: '',
-  password: '',
-})
+const error = ref('')
 
 const handleSubmit = async () => {
   try {
-    const user = await login(formState.value);
-console.log(user)
-    return { result: user };
+    const result = await login(formState.value)
+    if (result.status === 'error') {
+      error.value = result.errorCode
+      return
+    } 
+    userStore.setUser(result)
+    setTimeout(() => {
+      router.push('/')
+    }, 2000)
   } catch (error) {
     return { error: error.message };
   }
