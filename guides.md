@@ -34,3 +34,8 @@ Add this to `nuxt.config.ts`
     '@nuxtjs/tailwindcss'
 ]
 ````
+
+## Setup Pinia
+```bash
+yarn add pinia @pinia/nuxt
+```
