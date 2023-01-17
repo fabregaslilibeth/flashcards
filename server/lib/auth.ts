@@ -5,7 +5,7 @@ import {
 
 import { firebaseAuth } from "./firebase";
 
-export const register = async (form) => {
+export const register = async (form: HTMLFormElement) => {
   const user = createUserWithEmailAndPassword(
     firebaseAuth,
     form.email,
@@ -14,6 +14,7 @@ export const register = async (form) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
+      // commit to store
       return user;
     })
     .catch((error) => {
@@ -24,11 +25,12 @@ export const register = async (form) => {
   return user;
 };
 
-export const login = async (form) => {
+export const login = async (form: HTMLFormElement) => {
   await signInWithEmailAndPassword(firebaseAuth, form.email, form.password)
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
+      // commit to store
       return user;
     })
     .catch((error) => {

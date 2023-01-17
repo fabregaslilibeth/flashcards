@@ -12,7 +12,6 @@
     "nuxt": "^3.0.0"
   },
   "dependencies": {
-    "@nuxtjs/firebase": "^8.2.2",
     "firebase": "^9.15.0",
     "h3": "^1.0.2",
     "yarn": "^1.22.19"
