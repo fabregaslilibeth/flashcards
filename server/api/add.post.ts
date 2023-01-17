@@ -10,6 +10,6 @@ export default defineEventHandler(async (event) => {
 
     return { result: docRef };
   } catch (error) {
-    return { error: error.message }
-  } 
+    return { error: error.message };
+  }
 });

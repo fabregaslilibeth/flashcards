@@ -8,5 +8,5 @@ export default defineEventHandler(async (event: H3Event) => {
     return { result: docs };
   } catch (error) {
     return { result: [], error: error.message };
-  } 
+  }
 });
