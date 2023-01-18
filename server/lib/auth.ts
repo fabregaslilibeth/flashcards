@@ -1,8 +1,13 @@
-import { UserInfo } from './../../utils/types/user';
+import { useUserStore } from '@/stores/user';
+import { useUserStore } from './../../stores/user';
+import { UserInfo } from "./../../utils/types/user";
+
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
+  onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 
 import { firebaseAuth } from "./firebase";
@@ -28,21 +33,44 @@ export const register = async (form: HTMLFormElement) => {
 };
 
 export const login = async (form: HTMLFormElement) => {
-  const user = await signInWithEmailAndPassword(firebaseAuth, form.email, form.password)
+  const user = await signInWithEmailAndPassword(
+    firebaseAuth,
+    form.email,
+    form.password
+  )
     .then((userCredential) => {
-      const user = userCredential.user
+      const user = userCredential.user;
       const userInfo = {
-        email: user.email, 
-        name: user.displayName, 
-        id: 'asdasd',
-      } as UserInfo
+        email: user.email,
+        name: user.displayName,
+        id: "asdasd",
+      } as UserInfo;
 
-      return {status: 'success', userInfo}
+      return { status: "success", userInfo };
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      return {status: 'error', errorCode}
+      return { status: "error", errorCode };
     });
-    return user
+  return user;
+};
+
+onAuthStateChanged(firebaseAuth, (user) => {
+  const userStore = useUserStore()
+  if (user) {
+    userStore.setUser(user)
+  } else {
+    userStore.setUser({})
+  }
+});
+
+export const signout = async () => {
+  await signOut(firebaseAuth)
+    .then(() => {
+      console.log("SIGNED OUT");
+    })
+    .catch((error) => {
+      // An error happened.
+    });
 };

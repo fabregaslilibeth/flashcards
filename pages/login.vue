@@ -39,7 +39,6 @@
 
 <script setup lang="ts">
 import { login } from "../server/lib/auth"
-import { UserInfo } from '@/utils/types/user'
 
 const { user, userStore } = useUser()
 const router = useRouter()
