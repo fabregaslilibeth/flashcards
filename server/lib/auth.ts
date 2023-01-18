@@ -1,5 +1,4 @@
-import { useUserStore } from '@/stores/user';
-import { useUserStore } from './../../stores/user';
+import { useUserStore } from "@/stores/user";
 import { UserInfo } from "./../../utils/types/user";
 
 import {
@@ -43,7 +42,7 @@ export const login = async (form: HTMLFormElement) => {
       const userInfo = {
         email: user.email,
         name: user.displayName,
-        id: "asdasd",
+        id: user.uid,
       } as UserInfo;
 
       return { status: "success", userInfo };
@@ -57,11 +56,16 @@ export const login = async (form: HTMLFormElement) => {
 };
 
 onAuthStateChanged(firebaseAuth, (user) => {
-  const userStore = useUserStore()
+  const userStore = useUserStore();
   if (user) {
-    userStore.setUser(user)
+    const currentUser = {
+      name: user.displayName,
+      email: user.email,
+      id: user.uid,
+    };
+    userStore.setUser(currentUser);
   } else {
-    userStore.setUser({})
+    userStore.setUser({});
   }
 });
 

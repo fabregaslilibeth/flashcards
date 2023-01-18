@@ -9,13 +9,12 @@
 
 <script setup lang="ts">
 import { signout } from "../server/lib/auth"
-const { user, userStore } = useUser()
+const { user } = useUser()
 const router = useRouter()
 
 const logout = async () => {
   try {
-    const result = await signout()
-    userStore.setUser()
+    await signout()
     setTimeout(() => {
       router.push('/login')
     }, 2000)

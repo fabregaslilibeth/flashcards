@@ -57,7 +57,7 @@ const handleSubmit = async () => {
       error.value = result.errorCode
       return
     } 
-    userStore.setUser(result)
+    userStore.setUser(result.userInfo)
     setTimeout(() => {
       router.push('/')
     }, 2000)

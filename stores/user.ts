@@ -1,5 +1,9 @@
 import { UserInfo } from './../utils/types/user';
 
+interface State {
+  user: UserInfo | null
+}
+
 export const useUserStore = defineStore('user', {
   state: (): State => ({
     user: null,
@@ -16,7 +20,3 @@ export const useUserStore = defineStore('user', {
     },
   },
 })
-
-interface State {
-  user: UserInfo | null
-}

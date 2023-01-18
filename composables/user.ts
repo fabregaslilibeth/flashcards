@@ -7,19 +7,6 @@ export function useUser() {
   const userStore = useUserStore();
   const { user } = storeToRefs(userStore);
 
-  // watch(
-  //   () => userStore.getUser,
-  //   () => {
-  //     if (userStore.getUser) {
-  //       const userData = userStore.getUser
-  //     }
-  //   },
-  //   {
-  //     immediate: true,
-  //     deep: true,
-  //   }
-  // )
-
   // expose managed state as return value
   return { user, userStore };
 }
