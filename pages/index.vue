@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <div class="grid grid-cols-12 h-screen text-center">
       <div class="col-span-2 flex flex-col justify-between bg-red-50 w-48">
         <div class="h-4/6 bg-green-50 flex flex-col justify-between">
@@ -30,7 +31,7 @@
         </div>
 
         <div>
-          <div>Add words</div>
+          <nuxt-link to="words/add">Add words</nuxt-link>
           <div>
             <signout />
           </div>
