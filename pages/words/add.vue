@@ -4,13 +4,9 @@
       <div class="text-blue-500 cursor-pointer">
         <nuxt-link to="/">&larr; Back</nuxt-link>
       </div>
-      <div
-        class="bg-blue-500 text-white px-12 py-1 rounded-full cursor-pointer"
-      >
-        Import CSV
-      </div>
+      <import-csv />
     </div>
-
+    
     <div class="my-8 relative">
       <form @submit.prevent="handleSubmit()">
         <div class="flex relative" v-for="(form, index) in forms" :key="index">
