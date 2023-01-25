@@ -1,0 +1,1 @@
+import{u as t}from"./user.247940fa.js";import{f as a,D as r,a as c,t as e,u as o,o as i}from"./entry.c2060199.js";const g=a({__name:"welcome",setup(u){const{user:s}=t(),n=r().public.firebase.apiKey;return(f,m)=>(i(),c("div",null,e(o(s))+" "+e(o(n)),1))}});export{g as default};

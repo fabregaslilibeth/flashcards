@@ -1,0 +1,1 @@
+import{y as r,z as t}from"./entry.c2060199.js";const o=r("user",{state:()=>({user:null}),getters:{getActiveUserById(e){return e.user}},actions:{setUser(e){this.user=e}}});function n(){const e=o(),{user:s}=t(e);return{user:s,userStore:e}}export{o as a,n as u};
