@@ -14,7 +14,7 @@ Created new project on firebase
 
 ```bash
 # yarn
-yarn install firebase
+yarn add firebase
 
 yarn dev
 

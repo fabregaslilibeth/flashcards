@@ -5,10 +5,12 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.2.0",
+    "gh-pages": "^5.0.0",
     "nuxt": "^3.0.0"
   },
   "dependencies": {
